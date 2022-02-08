@@ -18,13 +18,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "infoPlist":{
-        "NSLocationAlwaysAndWhenInUseUsageDescription":"Allows App to use location services in the foreground and background.",
-        "NSFaceIDUsageDescription":"Allows App to use Face ID for a simpler sign in.",
-        "UIBackgroundModes":[
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Allows App to use location services in the foreground and background.",
+        "NSFaceIDUsageDescription": "Allows App to use Face ID for a simpler sign in.",
+        "UIBackgroundModes": [
           "location",
           "fetch"
-          
         ]
       }
     },
@@ -32,7 +31,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      } 
+      }
+      
     },
     "web": {
       "favicon": "./assets/favicon.png"
