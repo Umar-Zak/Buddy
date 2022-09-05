@@ -21,5 +21,5 @@ export const getLocations = async updateState=>{
     const locations = await AsyncStorage.getItem(LOCATION_KEY)
     if (!locations) return
     
-   updateState(locations)
+   updateState(JSON.parse(locations))
 }

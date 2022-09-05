@@ -1,24 +1,26 @@
-import { View,StyleSheet,Text, Image, TouchableOpacity,TouchableHighlight } from 'react-native';
+import { View,StyleSheet,Text, Image, TouchableOpacity} from 'react-native';
 import colors from '../utils/colors';
+import time from '../utils/time';
 
-const Card = ({data,style}) => {
+const Card = ({data={latitude:2390,longitude:-1290,time:new Date(),finished:new Date()},style,onPress}) => {
+   
     return ( 
-        <TouchableOpacity onPress={()=>console.log("Pressed card")}>
+        <TouchableOpacity onPress={onPress}>
         <View style={[styles.card,style]}>
        <View style={styles.header}>
            <Image style={styles.location} source={require("../assets/location.png")} />
            <View>
-               <Text style={styles.heading}>12 hours ago</Text>
+               <Text style={styles.heading}>{time.format(data.time)}</Text>
                <Text style={styles.tagline}>30 minutes done</Text>
            </View>
        </View>
        <View style={styles.coordinate}>
         <Text style={styles.latitude}>Latitude</Text>
-        <Text style={styles.value}>2390</Text>
+        <Text style={styles.value}>{data.latitude}</Text>
        </View>
        <View style={styles.coordinate}>
         <Text style={styles.latitude}>Longitude</Text>
-        <Text style={styles.value}>-1290</Text>
+        <Text style={styles.value}>{data.longitude}</Text>
        </View>
     </View>
         </TouchableOpacity>
@@ -73,7 +75,7 @@ latitude:{
     },
     value:{
         fontWeight:"500",
-    fontSize:12,
+    fontSize:11,
     color:colors.primary
     }
 })

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Image,StyleSheet,ScrollView ,View} from 'react-native';
+import { StyleSheet,ScrollView ,View} from 'react-native';
+import _ from 'underscore';
 import {requestPermissions,beginTask} from "../tasks/LocationTask"
 import {getLocations} from "../storage/store"
 import HighLights from '../component/HighLights';
@@ -9,8 +10,8 @@ import CurrentLocation from '../component/CurrentLocation';
 const HomeScreen = () => {
     const data = [1,2,3,4]
     const [locations,setLocations] = useState([])
-   
-    useEffect(()=>{
+   const highlights = _.filter(locations,loca => new Date(loca.time).getDate() === new Date().getDate())
+   useEffect(()=>{
         beginTask()
         requestPermissions()
         getLocations(setLocations)
@@ -23,7 +24,7 @@ const HomeScreen = () => {
             <CurrentLocation style={styles.map}/>
            <View style={styles.content}>
           <ScrollView style={styles.scroll}>
-          <HighLights data={data}/>
+          <HighLights data={highlights}/>
           <MostVisited data={data}/>
           </ScrollView>
            </View>
